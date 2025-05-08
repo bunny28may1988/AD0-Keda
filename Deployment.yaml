@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ado-agent
+  namespace: ado-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ado-agent
+  template:
+    metadata:
+      labels:
+        app: ado-agent
+    spec:
+      containers:
+      - name: ado-agent
+        image: 28may1988/azp-agent:linux
+        imagePullPolicy: Always
+        envFrom:
+        - secretRef:
+            name: ado-agent-secret
+      imagePullSecrets:
+      - name: dockerhub-secret
