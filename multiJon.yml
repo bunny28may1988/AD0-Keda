@@ -1,6 +1,6 @@
  trigger: none
 
- pool: Keda
+ pool: SelfHosted-DockerAgent
 
  variables:
    buildConfiguration: 'Release'
